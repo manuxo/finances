@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ConfigComponent } from './components/config/config.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
+import { AppRoutingModule } from './modules/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AboutComponent } from './components/about/about.component';
     AboutComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
