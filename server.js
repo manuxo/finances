@@ -1,4 +1,5 @@
 //Dependencies
+const http = require('http');
 const express =require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -8,8 +9,8 @@ const expressSession = require('express-session');
 //Init App
 
 const PORT = process.env.PORT || 3000;
-const IP = process.env.IP || 'localhost';
 const app = express();
+app.set('port',PORT);
 
 //Middleware
 
@@ -49,6 +50,10 @@ app.use((err,req,res,next) => {
         res.status(500).send();
 });
 
-const server = app.listen(PORT, IP, () => {
-    console.log(`Server is running on http://${IP}:${PORT}`);
-});
+
+
+const server = http.createServer(app);
+
+server.listen(PORT, () => {
+    console.log(`Server running on port ${port}`);
+})
