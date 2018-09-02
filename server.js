@@ -35,6 +35,17 @@ app.get('/session', (req,res) => {
 
 //Routes
 
+
+//Testing db connection
+
+const userRepo = require('./server/models/users');
+
+app.get('/api/users', (req,res,next) => {
+    userRepo.findAll(rows => {
+        res.send(rows);
+    });
+});
+
 //Serve index.html
 
 app.get('*',(req,res,next) => {
