@@ -37,7 +37,7 @@ app.get('/session', (req,res) => {
 //Serve index.html
 
 app.get('*',(req,res,next) => {
-    res.sendFile(path.join(__dirname,'dist','clothes-app/index.html'));
+    res.sendFile(path.join(__dirname,'dist','finances/index.html'));
 });
 
 //Error handling
