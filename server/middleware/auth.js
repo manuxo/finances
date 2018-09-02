@@ -8,7 +8,6 @@ module.exports = (req,res,next) => {
         req.userData = decoded;
         next();
     } catch(err) {
-        localStorage.clear();
         return res.status(401).send({message: 'Auth failed'});
     }
 }
