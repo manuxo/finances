@@ -4,7 +4,6 @@ const express =require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
-const expressSession = require('express-session');
 
 //Init App
 
@@ -22,29 +21,13 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'dist'))); //img,data
 app.use(express.static(path.join(__dirname,'dist','finances')));
 
-app.use(expressSession({
-    secret: "Alpha3000$1997m12a25e",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {maxAge: 1000 * 60 * 60 }
-}));
-
-app.get('/session', (req,res) => {
-    res.send(req.session);
-});
 
 //Routes
 
+const userRouter = require('./server/routes/user-router');
 
-//Testing db connection
 
-const userRepo = require('./server/models/users');
-
-app.get('/api/users', (req,res,next) => {
-    userRepo.findAll(rows => {
-        res.send(rows);
-    });
-});
+app.use('/api/users', userRouter);
 
 //Serve index.html
 

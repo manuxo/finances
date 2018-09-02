@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  sessionSecret: "Alpha3000$1997m12a25e",
   jwtSecret: "UPC2018-Finanzas$$$$"
 };
 

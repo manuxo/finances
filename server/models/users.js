@@ -54,11 +54,10 @@ module.exports = {
     },
     save: (userData, callback) => {
         if(pool){
-            const {email,password,business_name,ruc,phone_number,created_at} = userData;
+            const {email,password,business_name,ruc,phone_number} = userData;
             const query = {
-                text: 'INSERT INTO users(email,password,business_name,ruc,phone number, created_at'+
-                'VALUES($1,$2,$3,$4,$5,$6)',
-                values: [email,password,business_name,ruc, phone_number,created_at]
+                text: 'INSERT INTO users(email,password,business_name,ruc,phone_number) VALUES($1,$2,$3,$4,$5)',
+                values: [email,password,business_name,ruc,phone_number]
             };
             pool.query(query)
             .then(res => {
