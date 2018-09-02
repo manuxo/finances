@@ -55,5 +55,5 @@ app.use((err,req,res,next) => {
 const server = http.createServer(app);
 
 server.listen(PORT, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Server running on port ${PORT}`);
 })
