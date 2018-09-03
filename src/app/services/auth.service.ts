@@ -10,7 +10,8 @@ import { environment } from '../../environments/environment.prod';
 })
 export class AuthService {
 
-  private usersURL = `${environment.url}/api/users` || `http://localhost:3000/api/users`;
+  private url = environment.url || 'http://localhost:3000';
+  private usersUrl = `${this.url}/api/users`;
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type':'application/json'})
   };
