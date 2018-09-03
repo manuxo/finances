@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelper } from 'angular2-jwt';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,21 +15,30 @@ export class AuthService {
   };
   private jwt: JwtHelper = new JwtHelper();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   save(user): Observable<any>{
     const url = `${this.usersURL}/signup`;
     return this.http.post<any>(url,user,this.httpOptions);
   }
-  login(user): Observable<any>{
+  login(user,result): void{
     const url = `${this.usersURL}/login`;
-    return this.http.post<any>(url,user,this.httpOptions);
+    this.http.post<any>(url,user,this.httpOptions).subscribe(res => {
+      localStorage.setItem('token',res.token);
+      localStorage.setItem('userData', JSON.stringify(res.userData));
+      this.router.navigate(['/home']);
+    });
   }
   isAuthenticated(): boolean{
     const token = localStorage.getItem('token');
     if(token)
-      return this.jwt.isTokenExpired(token);
+      return !this.jwt.isTokenExpired(token);
     return false;
+  }
+
+  getUserData(): any{
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    return userData;
   }
 
   logout(): void{

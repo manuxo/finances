@@ -50,8 +50,11 @@ userRouter.post('/login', (req,res,next) => {
                 return res.status(401).send({message: 'Invalid password'});
             if(result){
                 const payload = {
+                    uid: rows[0].id,
                     email: rows[0].email,
-                    uid: rows[0].id
+                    business_name: rows[0].business_name,
+                    ruc: rows[0].ruc,
+                    phone_number: rows[0].phone_number
                 };
                 //Create token
                 const token = jwt.sign(
