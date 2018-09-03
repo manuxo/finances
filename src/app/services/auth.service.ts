@@ -21,7 +21,7 @@ export class AuthService {
     const url = `${this.usersURL}/signup`;
     return this.http.post<any>(url,user,this.httpOptions);
   }
-  login(user,result): void{
+  login(user): void{
     const url = `${this.usersURL}/login`;
     this.http.post<any>(url,user,this.httpOptions).subscribe(res => {
       localStorage.setItem('token',res.token);

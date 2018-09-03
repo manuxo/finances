@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     this.auth.save(this.model).subscribe(res => {
-      this.auth.login(this.model,res);
+      this.auth.login(this.model);
     });
   }
 

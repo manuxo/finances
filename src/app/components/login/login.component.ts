@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.auth.login(this.model,null);
+    this.auth.login(this.model);
   }
 
   newModel(): void{
