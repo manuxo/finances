@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  sessionSecret: "Alpha3000$1997m12a25e",
+  url: 'https://leasingapp.herokuapp.com',
   jwtSecret: "UPC2018-Finanzas$$$$"
 };
