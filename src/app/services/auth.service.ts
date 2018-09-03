@@ -3,15 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelper } from 'angular2-jwt';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  private url = environment.url || 'http://localhost:3000';
-  private usersUrl = `${this.url}/api/users`;
+  private usersURL = `${environment.baseUrl}/api/users`;
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type':'application/json'})
   };
