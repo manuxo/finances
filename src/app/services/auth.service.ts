@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { JwtHelper } from 'angular2-jwt';
-import { Observable } from 'rxjs';
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 
@@ -13,7 +13,7 @@ export class AuthService {
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type':'application/json'})
   };
-  private jwt: JwtHelper = new JwtHelper();
+  private jwt: JwtHelperService = new JwtHelperService();
 
   constructor(private http: HttpClient, private router: Router) {}
 
