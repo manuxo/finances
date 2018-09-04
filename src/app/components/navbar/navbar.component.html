@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light rounded">
   <a class="navbar-brand" href="#">
     <i class="fa fa-credit-card" aria-hidden="true"></i> Leasing 
   </a>
@@ -39,11 +39,9 @@
           <i class="fa fa-user"></i> {{auth.getUserData().email}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Mis Operaciones</a>
+          <a class="dropdown-item" href="#">Mis Bonos</a>
           <a class="dropdown-item" href="#">Mi Cuenta</a>
-          <a href="#" class="dropdown-item">
-            Configuración
-          </a>
+          <a class="dropdown-item" routerLink="/config">Configuración</a>
           <a class="dropdown-item" href="#">Ayuda</a>
           <a class="dropdown-item" routerLink="/login" (click)="auth.logout()">Cerrar sesión</a>
         </div>
