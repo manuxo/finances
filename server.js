@@ -4,13 +4,28 @@ const express =require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mailer = require('express-mailer');
 
 //Init App
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.set('port',PORT);
+mailer.extend(app, {
+    from: 'finance.leasing.app@gmail.com',
+    host: 'smtp.gmail.com',
+    secureConnection: true,
+    port: 465,
+    transportMethod: 'SMTP',
+    auth: {
+      user: 'finance.leasing.app@gmail.com',
+      pass: 'leasingapp123'
+    }
+});
 
+//View engine for express-mailer
+app.set('views',path.join(__dirname,'server','views'));
+app.set('view engine', 'pug');
 
 //Config - CORS
 app.use(function(req, res, next) {
@@ -18,6 +33,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
 //Middleware
 
 app.use(bodyParser.json());
@@ -32,9 +48,11 @@ app.use(express.static(path.join(__dirname,'dist','finances')));
 //Routes
 
 const userRouter = require('./server/routes/user-router');
+const emailRouter = require('./server/routes/email-router');
 
 
 app.use('/api/users', userRouter);
+app.use('/api/email', emailRouter);
 
 //Serve index.html
 

@@ -16,12 +16,12 @@ CREATE TABLE users(
 
 CREATE TABLE preferencias(
     id serial primary key,
-    prima numeric(3,2) not null default 100.00
-    estructuracion numeric(3,2) not null default 100.00
-    colocacion numeric(3,2) not null default 100.00
-    flotacion numeric(3,2) not null default 100.00
-    cavali numeric(3,2) not null default 100.00
-    tipo_tasa numeric(3,2) not null default 'NOMINAL'
+    prima numeric(3,2) not null default 100.00,
+    estructuracion numeric(3,2) not null default 100.00,
+    colocacion numeric(3,2) not null default 100.00,
+    flotacion numeric(3,2) not null default 100.00,
+    cavali numeric(3,2) not null default 100.00,
+    tipo_tasa varchar(45) not null default 'NOMINAL'
 );
 
 CREATE TABLE bonos(
