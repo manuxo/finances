@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactViewModel } from './viewmodel';
+import { Router } from '@angular/router';
+import { MailerService } from '../../services/mailer.service';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  model: ContactViewModel;
+
+  constructor(private router: Router, private mailer: MailerService) { 
+    this.newModel();
+  }
 
   ngOnInit() {
   }
 
+  newModel(): void{
+    this.model = new ContactViewModel('','','','');
+  }
+
+  onSubmit(){
+    this.mailer.sendContactMessage(this.model);
+    this.router.navigate(['/home']);
+    document.body.scrollIntoView();
+  }
+
+  onReset(){
+    this.newModel();
+  }
 }

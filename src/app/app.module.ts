@@ -14,6 +14,7 @@ import { AppRoutingModule } from './modules/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { FormsModule} from '@angular/forms';
+import { MailerService } from './services/mailer.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { FormsModule} from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, MailerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

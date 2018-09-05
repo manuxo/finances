@@ -1,3 +1,46 @@
-<p>
-  contact works!
-</p>
+<div class="row">
+  <div class="col-lg-6 col-sm-12 col-xs-12 mx-auto">
+    <div class="card">
+      <div class="card-header text-center">
+        <b>Contáctanos</b>
+      </div>
+      <div class="card-body">
+        <form class="form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <div class="form-group">
+            <label for="contactName">Nombre: </label>
+            <input class="form-control" type="text" required [(ngModel)]="model.name" name="contactName" #contactName="ngModel">
+            <small [hidden]="contactName.valid || contactName.pristine" class="form-text text-danger">
+              * Ingrese su nombre
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" class="form-control" required [(ngModel)]="model.email" name="email" #email="ngModel">
+            <small [hidden]="email.valid || email.pristine" class="form-text text-danger">
+              * Ingrese su correo
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber">Teléfono: </label>
+            <input type="text" id="phoneNumber" class="form-control" [(ngModel)]="model.phone_number" name="phoneNumber" #phoneNumber="ngModel">
+            <small [hidden]="phoneNumber.valid || phoneNumber.pristine" class="form-text text-danger">
+              * Ingrese su teléfono
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="message"></label>
+            <textarea id="message" cols="30" rows="10" class="form-control" placeholder="Escriba un mensaje..." required
+            [(ngModel)]="model.message" name="message" #message="ngModel"></textarea>
+            <small [hidden]="message.valid || message.pristine" class="form-text text-danger">
+              * Ingrese un mensaje
+            </small>
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-dark" [disabled]="!contactForm.form.valid">Enviar</button>
+            <button type="reset" class="btn btn-default" (click)="onReset()">Limpiar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
