@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -6,11 +6,20 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit,AfterViewInit {
 
-  constructor(public auth: AuthService) { }
-
-  ngOnInit() {
+  constructor(public auth: AuthService, private elementRef: ElementRef) {
+    
   }
 
+  ngOnInit(){
+  }
+  ngAfterViewInit() {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    let links = document.getElementsByClassName('nav-link');
+    console.log(links);
+    for(let i = 0; i < links.length; i++)
+      links[i].addEventListener('click',() => document.getElementById('buttonToggler').click());
+  }
 }

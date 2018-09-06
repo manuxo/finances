@@ -2,7 +2,7 @@
   <a class="navbar-brand" href="#">
     <i class="fa fa-credit-card" aria-hidden="true"></i> Leasing 
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" id="buttonToggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarToggler">
@@ -34,6 +34,11 @@
           <i class="fa fa-sign-in"></i> Ingresar
         </a>
       </li>
+      <li class="nav-item" *ngIf="!auth.isAuthenticated()">
+        <a href="" class="nav-link" routerLink="/register">
+          <i class="fa fa-address-card" aria-hidden="true"></i> Registrarse
+        </a>
+      </li>
       <li class="nav-item dropdown" *ngIf="auth.isAuthenticated()">
         <a class="nav-link dropdown-toggle btn btn-dark text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">            
           <i class="fa fa-user"></i> {{auth.getUserData().email}}
@@ -48,6 +53,4 @@
       </li>
     </ul>
   </div>
-
-  
 </nav>

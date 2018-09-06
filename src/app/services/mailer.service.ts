@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { AlertService } from './alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +16,15 @@ export class MailerService {
   };
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router, private alert: AlertService) {}
 
   sendContactMessage(model): void{
     const url = `${this.emailURL}/contact`;
     this.http.post<any>(url,model,this.httpOptions).subscribe(data => {
-      console.log('Correo enviado');
+      const message = data;
+      this.alert.success(message.success);
+    }, error => {
+      this.alert.error('Error al enviar mensaje.');
     });
   }
 }

@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { FormsModule} from '@angular/forms';
 import { MailerService } from './services/mailer.service';
+import { AlertComponent } from './components/alert/alert.component';
+import { AlertService } from './services/alert.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { MailerService } from './services/mailer.service';
     RegisterComponent,
     ConfigComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { MailerService } from './services/mailer.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, MailerService],
+  providers: [AuthService, MailerService, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

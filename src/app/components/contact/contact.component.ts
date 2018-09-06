@@ -25,8 +25,6 @@ export class ContactComponent implements OnInit {
 
   onSubmit(){
     this.mailer.sendContactMessage(this.model);
-    this.router.navigate(['/home']);
-    document.body.scrollIntoView();
   }
 
   onReset(){

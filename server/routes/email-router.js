@@ -16,10 +16,10 @@ emailRouter.post('/contact',(req,res) => {
         },(err) => {
             if (err) {
                 console.log(err);
-                res.send('There was an error sending the email');
+                res.status(400).send({error:'Error al enviar correo.'})
                 return;
             }
-            res.send('Email Sent');
+            res.status(200).send({success:'Correo enviado.'});
         });
     }
 });
